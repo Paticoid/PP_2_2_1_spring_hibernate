@@ -19,24 +19,24 @@ public class MainApp {
       User userT = new User("Roby","Gory", "roby@mail.ru");
       Car carO = new Car("BMW",4);
       Car carT = new Car("Audi",6);
-      userO.setCar(carO);
-      userT.setCar(carT);
+      userService.add(carO);
+      userService.add(carT);
+      List<Car> cars = userService.listCars();
+      userO.setCar(cars.get(0));
+      userT.setCar(cars.get(1));
       userService.add(userO);
       userService.add(userT);
-
-
-
       List<User> users = userService.listUsers();
       for (User user : users) {
          System.out.println("Id = "+ user.getId());
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
-         System.out.println();
+         System.out.println("Car = " + user.getCar());
       }
-      User useres = userService.userHasCar(carT);
-      System.out.println(useres.toString());
-
+      System.out.println(userService.userHasCar(cars.get(0)));
+      context.close();
 
    }
 }
+

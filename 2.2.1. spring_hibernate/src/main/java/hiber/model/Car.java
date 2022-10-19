@@ -22,6 +22,8 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numberCar;
+    @OneToOne(mappedBy = "car")
+    private User user;
 
 
     public Car() {
@@ -39,6 +41,15 @@ public class Car {
     public void setNumberCar(Long numberCar) {
         this.numberCar = numberCar;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getModel() {
         return model;
     }
